@@ -1,2 +1,1 @@
-## dpa-persistent-example
-**Persistent example for Openshift API for Data Protection**
+### **Persistent example for Openshift API for Data Protection**
