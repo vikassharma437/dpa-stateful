@@ -1,0 +1,16 @@
+apiVersion: velero.io/v1
+kind: Restore
+metadata:
+  name: mssql-persistent-restore
+  namespace: openshift-adp
+spec:
+  backupName: mssql-persistent-backup
+  excludedResources:
+    - imagetag
+    - nodes
+    - events
+    - events.events.k8s.io
+    - backups.velero.io
+    - restores.velero.io
+    - resticrepositories.velero.io
+  restorePVs: true

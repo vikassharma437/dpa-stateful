@@ -1,0 +1,26 @@
+﻿apiVersion: oadp.openshift.io/v1alpha1
+kind: DataProtectionApplication
+metadata:
+  name: dpa-sample
+  namespace: openshift-adp
+spec:
+  backupLocations:
+    - velero:
+        config:
+          profile: default
+          region: my-bucket-region ##aws server region where s3 bucket has been created
+        credential:
+          key: cloud
+          name: cloud-credentials  ##aws server access key and secret key id where s3 bucket has been created
+        default: true
+        objectStorage:
+          bucket: my-bucket-name   ##aws s3 bucket name
+          prefix: my-bucket-prefix ##aws s3 bucket prefix
+        provider: aws
+  configuration:
+    restic:
+      enable: true
+    velero:
+      defaultPlugins:
+        - openshift
+        - aws
